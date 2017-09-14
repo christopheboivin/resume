@@ -1,0 +1,211 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{classic}                             % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}                               % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+\usepackage[utf8]{inputenc}     
+\usepackage{array}    
+\setlength{\tabcolsep}{4pt}              % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Christophe}{Boivin}
+\title{Développeur fullstack / Devops}                               % optional, remove / comment the line if not wanted
+\address{332 avenue Roger Salengro}{92370 Chaville}{}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+\phone[mobile]{+33~6~77~98~69~94}                   % optional, remove / comment the line if not wanted
+%\phone[fixed]{+2~(345)~678~901}                    % optional, remove / comment the line if not wanted
+%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
+\email{christophe.boivin@gmail.com}                               % optional, remove / comment the line if not wanted
+\homepage{https://github.com/christopheboivin}                         % optional, remove / comment the line if not wanted
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+%\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+\section{Compétences}
+\begin{tabular}[t]{| p{5cm} | p{12cm} |}
+  \hline  
+  Langages & Java, SQL, Javascript, CSS \\
+  \hline  
+  SGBD & Oracle, MySQL, Cassandra \\
+  \hline
+  Serveur d’applications & Weblogic, Tomcat, Jboss \\
+  \hline  
+  Front & AngularJS, NodeJS, npm, Highcharts, d3js, SpringMVC, Grunt, Bower \\
+  \hline 
+  Back & WebServices SOAP \& REST, Swagger, SpringCore, iBatis, Hibernate, Spring Batch \\
+  \hline
+  Admin & Ansible, Docker, Shell (zsh) \\
+  \hline
+   Outils de développement & Eclipse, IntelliJ / Webstorm \\
+  \hline  
+  Portails & WebLogic Portal, Jahia \\
+  \hline  
+  Divers & Maven, SVN, Git, Jenkins, Bugzilla, Mantis, HP Quality Center \\
+  \hline
+  Systèmes d’exploitation & Windows, Linux \\
+  \hline
+\end{tabular}
+
+\section{Formation \& Langues}
+\cventry{2014}{Certification Core Spring 3.2}{Pivotal}{}{}{}  % arguments 3 to 6 can be left empty
+\cventry{2014}{AngularJS}{SFEIR}{}{}{}
+\cventry{2004--2017}{Master Informatique}{Université Paris Sud XI Orsay}{Spécialisation: Ingénierie informatique}{}{}
+
+\cvitemwithcomment{Anglais}{Lu, écrit, parlé}{945 au TOEIC}
+\cvitemwithcomment{Allemand}{Niveau scolaire}{}
+
+\section{Expérience professionnelle}
+\subsection{Chez Ippon Technologies}
+\cventry{Juin 2015 à Juin 2017}{Recherche et Développement Java / Devops}{Tessi}{}{}{
+\textit{Au sein du département R\&D de Tessi Document Services, ajout de fonctionnalités dans la solution d'archivage numérique Data Content basée sur Cassandra}\\
+\begin{itemize}
+\item Mise à jour Thrift vers CQL et création d'un batch de mise à jour pour les clients existants (Cassandra 1.2 vers 2.0 puis versions suivantes)
+\item Création d'un système de génération de jobs Spark via une interface graphique simplifiée générée automatiquement à partir des tables spécifiques au client
+\item Création de scripts Ansible pour installer et déployer Cassandra, Spark, Tomcat et la solution sur un cluster
+\item Création et mise en place d'images Docker pour simplifier le déploiement de la solution pour le développement
+\item Multiples scripts shell de sauvegarde et restauration de la solution (snapshots cassandra)
+\end{itemize}
+}
+
+\cventry{Septembre 2014 à Mai 2015}{Conception et développement Java EE}{Accorhotels}{}{}{
+\textit{Refonte du couloir de réservation du site acorhotels.com et des sites marques pour mobile. Méthode de dev agile (scrum)}\\
+\begin{itemize}
+\item Développement BACK
+\begin{itemize}
+  \item Définition de l’API REST de prise de réservation
+(Signature, gestion des erreurs)
+  \item Développement des services REST (basés sur le système de prise de réservation existant, nécessité de conserver les mêmes performances)
+  \item Evolution des services pour ajouter des fonctionnalités sur le site mobile
+  \item Documentation Swagger
+  \end{itemize}
+\item Développement FRONT
+  \begin{itemize}
+  \item Développement des nouvelles pages du couloir de réservation :
+Templates, Controllers, Services, Routes, interaction avec l’api rest via \$http
+  \item Programmation orientée TDD avec Jasmine et Protractor
+  \item Intégration des css réalisées par une agence externe
+  \item Gestion couloir « multi marques » (préprocesseur less)
+  \item Intégration de l’authentification via l’api JS du profil utilisateur accor (ahconnect)
+  \end{itemize}
+\end{itemize}
+}
+
+\cventry{Mars 2013 à Septembre 2014}{Conception et développement Java EE}{Accorhotels}{}{}{
+\textit{Conception et développement d’une API REST exposant les informations du profil utilisateur accorhotels.com à des partenaires autorisés. Cette API est utilisée pour l’intégration de widget sur des sites web partenaires (ahconnect) ou pour le développement d’applications mobiles natives.}\\
+\begin{itemize}
+\item Définition de l’interface de l’API selon les contraintes techniques du projet
+\item Authentification de l’utilisateur avec serveur CAS et maintien de l’authentification au moyen d’un cookie
+Gestion de droits des partenaires sur les différentes resources de l’API
+\item Versioning des services
+\item Tests fonctionnels automatisés avec le plugin maven soap-ui et jenkins
+\end{itemize}
+}
+
+\cventry{Août 2011 à Février 2013}{Conception et développement Java EE}{Conseil Supérieur des Notaires}{}{}{
+\textit{Les sites immobilier.notaires.fr et notaires.fr sont les vitrines officielles du notariat sur internet et de leur métier de vente immobilière.
+Notaires.fr est le site institutionnel et présente le métier du notariat, les différentes instances ainsi que les actualités (CMS)
+Immobilier.notaires.fr présente l’aspect vente immobilière du métier et regroupe les annonces de tous les offices.}\\
+\begin{itemize}
+\item Refonte du système d’intégration des annonces pour le portail immobilier (intégration d’annonces depuis Se Loger et autres partenaires).
+\item Refonte graphique du site immobilier.notaires.fr (Front et Back Office) :
+  \begin{itemize}
+  \item Intégration de la nouvelle charte graphique
+  \item Adaptation des templates Jahia back office et mise à jour des modèles de pages personnalisés.
+  \end{itemize}
+\item Refonte du batch d’intégration / export des annonces vers les partenaires : la version existante ne supportait plus la charge et le code spécifique était difficilement maintenable.
+  \begin{itemize}
+  \item Réalisation de l'étude et choix du framework  (Spring Batch)
+  \item Développement : Spring 3.1, JPA
+  \end{itemize}
+\item Maintenance corrective et évolutive des sites :
+  \begin{itemize}
+  \item Ajout de fonctionnalités
+  \item Mise en place de Sonar / Jenkins pour analyser la qualité du code et faciliter des refontes
+  \item Intégration des patchs techniques Jahia
+  \end{itemize}
+\end{itemize}
+}
+
+\cventry{Avril 2011 à Juillet 2011}{Conception et développement Java EE}{SAKARAH}{}{}{
+\textit{Sakarah est une entreprise spécialisée dans la dématérialisation et le traitement de factures électroniques.
+Dans le cadre de la mise en place de la norme SEPA pour les paiements bancaires, la mission a été de prototyper l'intégration de la gestion de mandats et de paiements électroniques dans la plateforme existante.}\\
+\begin{itemize}
+\item Conception et réalisation d'écrans pour la gestion des mandats (Wicket), formulaire PDF
+\item Conception et réalisation des services de gestion des mandats (EJB3, Hibernate, MySQL)
+\item Mise à jour des services de génération des fichiers de virement et prélèvement existants pour respecter la norme ISO 20022.
+\item Développement de WebServices Rest pour la gestion des mandats
+\item Création d'un composant d'envoi de mails (Mule ESB)
+\item Mise à jour du build maven
+\end{itemize}
+}
+
+\subsection{Chez Capgemini}
+
+\cventry{Aout 2009 à Janvier 2011}{Conception et développement Java EE}{ERDF}{}{}{
+\textit{SGE (Système de Gestion des Echanges) est un SI permettant l’ouverture du marché de l’électricité à de nouveaux fournisseurs. Les différentes prestations du métier de l’électricité sont exposées aux fournisseurs par le biais d’un portail, de webservices et d’un EAI.} \\
+\begin{itemize}%
+\item Encadrement technique d’une équipe de 15 personnes.
+\item Développement de webservices (JaxB, JaxWS, EJB 3)
+\item Mise en place du nouveau socle technique (Spring MVC, Spring Batch)
+\item Création des builds maven pour JaxB / JaxWS (Création de plugins XJC pour assurer la compatibilité de l’exposition des services)
+\item Développement de portlets Spring MVC et PageFlow
+\item Gestion de la configuration des environnements (WLS10, Portal 10).
+\item Gestion de configuration (SVN) et réalisation des patchs.
+\item Migration XDoclet / Autotype vers JaxB, JaxWS
+\item Rédaction de dossiers de conception répondants aux besoins clients et aux contraintes de l’application.
+\item Chiffrage des développements. Relecture de code
+\end{itemize}
+}
+
+\cventry{Septembre 2007 à Juillet 2009}{Conception et développement Java EE}{ERDF}{}{}{
+\textit{SGE (Système de Gestion des Echanges) est un SI permettant l’ouverture du marché de l’électricité à de nouveaux fournisseurs. Les différentes prestations du métier de l’électricité sont exposées aux fournisseurs par le biais d’un portail, de webservices et d’un EAI.} \\
+\begin{itemize}%
+\item Développement Java : WebServices (JAXB, JAXWS) et composants portail (portlets PageFlow).
+\item Développement ALSB : création de proxies services, XQuery et routage
+\item Responsable de la gestion de configuration et des patches (création et maintenance des branches et tags SVN, livraisons)
+\item Maintenance corrective et préventive sur l’existant du projet
+\item Rédaction de spécifications techniques détaillées
+\item Réalisation de prototypes et intégration dans la version en cours du projet (Dozer)
+\end{itemize}
+}
+
+\clearpage
+
+%\clearpage\end{CJK*}                              % if you are typesetting your resume in Chinese using CJK; the \clearpage is required for fancyhdr to work correctly with CJK, though it kills the page numbering by making \lastpage undefined
+\end{document}
+
+
+%% end of file `template.tex'.
