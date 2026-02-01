@@ -259,12 +259,13 @@
 \renewcommand{\theenumiv}{\@Alph\c@enumiv}
 %   other symbols
 \newcommand*{\listitemsymbol}{\labelitemi~}
-\newcommand*{\addresssymbol}{}
+
 \newcommand*{\mobilephonesymbol}{}
 \newcommand*{\fixedphonesymbol}{}
 \newcommand*{\faxphonesymbol}{}
 \newcommand*{\emailsymbol}{}
 \newcommand*{\homepagesymbol}{}
+\newcommand*{\addresssymbol}{}
 
 % fonts
 \AtBeginDocument{\normalfont\color{color0}}
