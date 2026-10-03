@@ -19,7 +19,7 @@ jobs:
             latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended cm-super
 
       - name: Build
-        run: bash build.sh
+        run: bash build.sh all
 
       - uses: actions/upload-artifact@v4
         with:
