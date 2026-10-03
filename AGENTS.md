@@ -17,7 +17,7 @@ A single-file LaTeX CV (in French) built with the `moderncv` class.
 
 ## Build
 
-Requirements: a TeX distribution with `pdflatex` and `latexmk` (TeX Live or MiKTeX). On Windows, run commands from Git Bash.
+Requirements: a TeX distribution with `pdflatex`, `latexmk` and scalable T1 fonts (`cm-super`; microtype font expansion fails without it) — TeX Live or MiKTeX. Debian/Ubuntu: see the apt packages in `.github/workflows/build.yml`. On Windows, run commands from Git Bash.
 
 ```bash
 ./build.sh          # -> build/main.pdf and dist/<PDF_NAME>.pdf
