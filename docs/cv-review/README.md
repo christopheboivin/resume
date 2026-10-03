@@ -2,24 +2,19 @@
 
 Target: permanent position, full remote, any sector, 50/50 tech / leadership split.
 
-## Files
+## Where the proposals live
 
-| File | Applies on | Content |
-|------|-----------|---------|
-| `00-commun.diff` | `main.tex` | Fixes useful for every target |
-| `01-tech-lead-fullstack.diff` | `main.tex` + `00` | Tech Lead Fullstack Java/Angular |
-| `02-platform-engineer-devops.diff` | `main.tex` + `00` | Platform Engineer / DevOps |
-| `03-staff-engineer-architecte.diff` | `main.tex` + `00` | Staff Engineer / Hands-on architect |
+The fixes that apply to every target are in `main.tex`. Each positioning is a CV variant (see "Variants" in `AGENTS.md`):
 
-`01`, `02` and `03` are alternatives: apply `00` and then one of them.
+| Variant | Target | Build |
+|---------|--------|-------|
+| `variants/default.tex` | Generic CV (previous positioning) | `./build.sh` |
+| `variants/tech-lead.tex` | Tech Lead Fullstack Java/Angular | `./build.sh tech-lead` |
+| `variants/platform.tex` | Platform Engineer / DevOps | `./build.sh platform` |
+| `variants/staff.tex` | Staff Engineer / Hands-on architect | `./build.sh staff` |
 
-```bash
-git apply docs/cv-review/00-commun.diff
-git apply docs/cv-review/01-tech-lead-fullstack.diff
-```
-
-Values in `[brackets]` are placeholders: fill them with real figures or delete them.
-Each combination was test-built: 3 pages, 0 overfull boxes, 8–9 underfull boxes (current: 13).
+`\afaire{...}` placeholders are printed in red: replace them with real figures or delete them.
+The original proposals as diff files are in git history (commit `a672a1e`).
 
 ## Overall assessment
 
@@ -51,7 +46,7 @@ Most natural fit with the current job. Targets: product companies, scale-ups, so
 | Craftsmanship: TDD, BDD, Leagues/Chapters | Mentoring and code reviews are mentioned without any concrete detail |
 | 18 developers, 3 countries | No mention of product work (working with a PO, delivery) |
 
-Diff `01`: tech-lead title, a profile summary that mentions full remote, a skills table that puts versions first, more concrete key points (roadmap with examples of migrations, Release Tool usage), a deployment metric.
+Variant `tech-lead`: tech-lead title, a profile summary that mentions full remote, a skills table that puts versions first, more concrete key points (roadmap with examples of migrations, Release Tool usage), a deployment metric.
 
 ## Hypothesis 2 – Platform Engineer / DevOps (dev-oriented)
 
@@ -64,7 +59,7 @@ Strong market for full remote. A developer background is valued for building int
 | Credible move from dev to DevOps (2017) | No SRE indicators: SLO, MTTR, incidents, on-call |
 | Release Tool = developer platform | Scale not stated (number of services, clusters, environments) |
 
-Diff `02`: platform title, a profile that tells the dev-to-DevOps story, skills split into CI/CD / Infra / Monitoring, platform key points first, with before/after placeholders.
+Variant `platform`: platform title, a profile that tells the dev-to-DevOps story, skills split into CI/CD / Infra / Monitoring, platform key points first, with before/after placeholders.
 
 Suggested action outside the CV: CKA or CKAD certification, plus a cloud certification if you have real experience with that provider.
 
@@ -79,10 +74,10 @@ Matches a technical scope across several teams without becoming a manager. Fits 
 | Still writes code | "Staff Engineer" is less common in France: also target "Architecte logiciel" or "Principal Engineer" |
 | | Conferences you attend are not a strength; giving a talk would be one |
 
-Diff `03`: Staff/Architect title, a profile focused on technical decisions, an Architecture row in the skills, a key point to fill with a real architecture decision (context, choice, result).
+Variant `staff`: Staff/Architect title, a profile focused on technical decisions, an Architecture row in the skills, a key point to fill with a real architecture decision (context, choice, result).
 
 ## Assumptions to check
 
 - The 2007–2009 job (no employer mentioned) was merged with ERDF (Capgemini) as `2007--2011`.
 - "Full remote" is shown in the header next to the city.
-- In the three variants, the paragraph "Mon rôle m'assure… 50 %" is removed because the profile summary covers it, and the conference paragraph is shortened.
+- In `tech-lead`, `platform` and `staff`, the paragraph "Mon rôle m'assure… 50 %" is removed because the profile summary covers it, and the conference paragraph is shortened.
