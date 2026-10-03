@@ -1,0 +1,52 @@
+% pdf-name: Technical Leader Fullstack - DevOps
+% Variant "default": generic CV. Copy this file (or another variant) to tailor the CV
+% for a position or a company, then build it with: ./build.sh <file name without .tex>
+
+% Header title
+\newcommand{\cvtitle}{Technical Leader / DevOps / 19 ans d'XP}
+
+% "Profil" summary; leave empty to hide the section
+\newcommand{\cvprofile}{}
+
+% Rows of the skills table: Category & items \\ \hline
+\newcommand{\cvskills}{
+        Langages & Java, Kotlin, Python, Javascript, Typescript, HCL \\
+        \hline
+        Backend & Microservices, APIs REST, Ecosystème Spring, Architecture Hexagonale, Junit, Mockito, Cucumber, Gatling \\
+        \hline
+        Frontend & Angular, RxJS, Highcharts, d3js, Playwright, Karma, Jest \\
+        \hline
+        DevOps & GitHub Actions, Argo CD, Jenkins, Ansible, Helm, Docker, Kubernetes, Terraform, Open Telemetry, Stack ELK, Shell \\
+        \hline
+        Data & Oracle, PostgreSQL, Cassandra, Elasticsearch \\
+        \hline
+        Méthodes & Scrum, Kanban, BDD, TDD \\
+        \hline
+}
+
+% Current position: job title, extra intro paragraphs, key points
+\newcommand{\cvcurrentrole}{Technical Leader / DevOps}
+
+\newcommand{\cvcurrentintro}{
+  { J'anime et participe régulièrement à des réunions techniques avec des pairs d'autres projets, ce qui me permet d'échanger sur les évolutions techniques dans le groupe et à l'extérieur. J'assiste régulièrement à des conférences (KubeCon, DevoxxFR).\\\\}
+  {Mon rôle m'assure de rester en contact avec la technique, à laquelle je consacre environ 50\% de mon temps, ce qui me permet de continuer à améliorer mes compétences de développement Java/Angular, ainsi que "DevOps".\\}
+}
+
+\newcommand{\cvkeypoints}{
+    \begin{itemize}
+      \item Technical Leader Fullstack
+        \begin{itemize}
+          \item Encadrement technique des équipes de développement
+          \item Définition et suivi de la stratégie technique.
+          \item Participation et animation de "Leagues" et "Chapters" sur le développement et le "software craftsmanship"
+          \item Développement Fullstack d'un outil de suivi de la production "Release Tool" (Java/Angular)
+        \end{itemize}
+      \item DevOps
+        \begin{itemize}
+          \item Automatisation des créations d'environnement (Terraform, Ansible, scripts shell)
+          \item Automatisation des déploiements (GitHub Actions, Kubernetes, ArgoCD, Helm, Docker)
+          \item Mise en œuvre de l'observabilité de l'application (Stack Elastic, APM, Open Telemetry)
+          \item Suivi de la production
+        \end{itemize}
+    \end{itemize}
+}
