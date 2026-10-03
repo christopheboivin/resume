@@ -40,6 +40,7 @@ Fallback without latexmk: `pdflatex main.tex` (run twice; writes artifacts in th
 
 - Every change goes on a **new branch**; the **user chooses the branch name** — ask for it. Never commit directly to `master`.
 - Small, focused commits with conventional prefixes (`build:`, `ci:`, `docs:`, `chore:`, `doc:` for CV content).
+- Batch pushes: commit locally, push once per completed set of changes — every push triggers a CI build. Do not push after each commit.
 
 ## Verification checklist
 
