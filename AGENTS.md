@@ -44,8 +44,7 @@ The positioning analysis behind the variants is in `docs/cv-review/README.md`.
 
 - Encoding UTF-8, line endings LF (enforced by `.gitattributes` / `.editorconfig`).
 - Content is French; keep accents as UTF-8 characters (`inputenc` utf8 is loaded).
-- Use only the **moderncv 1.3 API** (`\cventry`, `\cvitem`, `\cvitemwithcomment`, `\cvlistitem`, …). Do not use macros introduced in moderncv 2.x (e.g. `\cvskill` from newer styles, fontawesome icons) unless the class is unvendored first.
-- Do not edit the vendored class/style files.
+- moderncv **2.x** comes from the TeX distribution (`texlive-latex-extra` / MiKTeX). The `main.tex` preamble pins the former 1.3 "classic" look (colors, marvosym icons, header spacing, `\section` / `\subsection`, patches on `\cventry` / `\cvitemwithcomment`); keep it unless a visual change is intended. A failed patch stops the build with "Cannot patch …, moderncv changed".
 - Do not change CV wording/content unless explicitly asked; tooling tasks touch tooling only.
 - Never commit PDFs or build artifacts (`build/`, `dist/`, `*.aux`, `*.log`, …).
 
