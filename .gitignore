@@ -5,3 +5,8 @@
 *.synctex.gz
 .idea/
 *.iml
+*.fls
+*.fdb_latexmk
+build/
+dist/
+.vscode/
