@@ -1,6 +1,6 @@
 # Plan: unvendor moderncv
 
-Status: **not started**. Self-contained; can be executed in a fresh session by any agent. Read `AGENTS.md` first.
+Status: **done** (moderncv 2.6.1, MiKTeX). Overrides kept in the `main.tex` preamble under "keep the moderncv 1.3 'classic' rendering". Self-contained; can be executed in a fresh session by any agent. Read `AGENTS.md` first.
 
 ## Goal
 

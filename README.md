@@ -1,6 +1,6 @@
 # My Resume
 
-LaTeX CV built with a vendored copy of [moderncv](https://ctan.org/pkg/moderncv) v1.3.0.
+LaTeX CV built with [moderncv](https://ctan.org/pkg/moderncv) 2.x from the TeX distribution, styled to match the former 1.3 look.
 
 ## Build
 
