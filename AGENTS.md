@@ -9,7 +9,6 @@ A single-file LaTeX CV (in French) built with the `moderncv` class.
 | Path | Role | Editable? |
 |------|------|-----------|
 | `main.tex` | The CV source (preamble + content) | Yes |
-| `moderncv.cls`, `moderncv*.sty`, `collection.sty`, `tweaklist.sty` | Vendored moderncv **v1.3.0 (2013)** | **No** — see `docs/plans/unvendor-moderncv.md` |
 | `latexmkrc` | latexmk config (pdflatex, output in `build/`) | Yes |
 | `build.sh` | Build entry point, copies a named PDF to `dist/` | Yes |
 | `.github/workflows/build.yml` | CI: builds the PDF, uploads it as artifact `cv-pdf` | Yes |
@@ -31,8 +30,7 @@ Fallback without latexmk: `pdflatex main.tex` (run twice; writes artifacts in th
 
 - Encoding UTF-8, line endings LF (enforced by `.gitattributes` / `.editorconfig`).
 - Content is French; keep accents as UTF-8 characters (`inputenc` utf8 is loaded).
-- Use only the **moderncv 1.3 API** (`\cventry`, `\cvitem`, `\cvitemwithcomment`, `\cvlistitem`, …). Do not use macros introduced in moderncv 2.x (e.g. `\cvskill` from newer styles, fontawesome icons) unless the class is unvendored first.
-- Do not edit the vendored class/style files.
+- moderncv **2.x** comes from the TeX distribution (`texlive-latex-extra` / MiKTeX). The `main.tex` preamble pins the former 1.3 "classic" look (colors, marvosym icons, header spacing, `\section` / `\subsection`, patches on `\cventry` / `\cvitemwithcomment`); keep it unless a visual change is intended. A failed patch stops the build with "Cannot patch …, moderncv changed".
 - Do not change CV wording/content unless explicitly asked; tooling tasks touch tooling only.
 - Never commit PDFs or build artifacts (`build/`, `dist/`, `*.aux`, `*.log`, …).
 
