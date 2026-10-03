@@ -20,7 +20,7 @@ Files to remove: `moderncv.cls`, `moderncvcolor{black,blue,green,grey,orange,pur
    - `\usepackage[utf8]{inputenc}` is redundant on LaTeX ≥ 2018 (harmless; may remove).
    - Lengths: `\hintscolumnwidth` and the classic-style name width computation changed; may need `\setlength{\hintscolumnwidth}{…}`.
 5. Compare: `pdftoppm -r 80 -png build/main.pdf new`, then visually diff (e.g. ImageMagick `compare base-1.png new-1.png diff-1.png`). Page count must stay 3 unless agreed.
-6. Update `AGENTS.md` (remove "vendored / do not edit" row, update the moderncv API note to 2.x), `README.md`, and CI apt packages if needed (`texlive-fonts-extra` for fontawesome5).
+6. Update `AGENTS.md` (remove "vendored / do not edit" row, update the moderncv API note to 2.x), `README.md`, and CI apt packages if needed (`texlive-fonts-extra` for fontawesome5; `cm-super` is already required for scalable T1 fonts with microtype).
 7. Commit, push, check the CI "Build CV" run.
 
 ## Risks / rollback
