@@ -1,0 +1,59 @@
+--- a/main.tex
++++ b/main.tex
+@@ -27,7 +27,7 @@
+ 
+ % personal data
+ \name{Christophe}{BOIVIN}
+-\title{Technical Leader / DevOps / 19 ans d'XP}                               % optional, remove / comment the line if not wanted
++\title{Tech Lead Fullstack Java / Angular -- 19 ans d'expérience}                               % optional, remove / comment the line if not wanted
+ \address{Bussy-Saint-Georges (77)}{Full remote}{} % optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+ \phone[mobile]{+33~6~77~98~69~94}                   % optional, remove / comment the line if not wanted
+ %\phone[fixed]{+2~(345)~678~901}                    % optional, remove / comment the line if not wanted
+@@ -54,14 +54,16 @@
+ %\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+ %-----       resume       ---------------------------------------------------------
+     \makecvtitle
++    \section{Profil}
++    \cvitem{}{Tech Lead fullstack Java/Spring et Angular. Depuis 2019, responsable technique de 3 feature teams (18 développeurs) réparties entre l'Inde, la Pologne et la France : roadmap technique, revues de code, standards de développement. Je consacre 50\,\% de mon temps au développement. Habitué au travail à distance et asynchrone sur plusieurs fuseaux horaires. Recherche un poste de Tech Lead en full remote.}
+     \section{Compétences}
+     \begin{tabular}[t]{| p{2cm} | p{15cm} |}
+         \hline
+-        Langages & Java, Kotlin, Python, Javascript, Typescript, HCL \\
++        Langages & Java [version], TypeScript, Kotlin, Python, JavaScript, HCL \\
+         \hline
+-        Backend & Microservices, APIs REST, Ecosystème Spring, Architecture Hexagonale, Junit, Mockito, Cucumber, Gatling \\
++        Backend & Spring Boot [version], microservices, APIs REST, architecture hexagonale, JUnit, Mockito, Cucumber, Gatling \\
+         \hline
+-        Frontend & Angular, RxJS, Highcharts, d3js, Playwright, Karma, Jest \\
++        Frontend & Angular [version], RxJS, Highcharts, d3.js, Playwright, Karma, Jest \\
+         \hline
+         DevOps & GitHub Actions, Argo CD, Jenkins, Ansible, Helm, Docker, Kubernetes, Terraform, Open Telemetry, Stack ELK, Shell \\
+         \hline
+@@ -75,21 +77,20 @@
+     \cventry{Avril 2019 à aujourd'hui}{Technical Leader / DevOps}{}{}{}{
+      \textit{Au sein d'un projet de pilotage des risques de crédit structurés. Équipe composée de 3 feature teams de 6 développeurs et 1 équipe "DevOps" basés en Inde, Pologne et France \\\\}
+      {En tant que "Global Technical Leader", j'assure l'encadrement technique de l'ensemble des features teams. Je suis en charge de la définition de la feuille de route technique, du respect des normes de développement du groupe, de la promotion des bonnes pratiques chez les développeurs.\\\\}
+-  { J'anime et participe régulièrement à des réunions techniques avec des pairs d'autres projets, ce qui me permet d'échanger sur les évolutions techniques dans le groupe et à l'extérieur. J'assiste régulièrement à des conférences (KubeCon, DevoxxFR).\\\\} 
+-	{Mon rôle m'assure de rester en contact avec la technique, à laquelle je consacre environ 50\% de mon temps, ce qui me permet de continuer à améliorer mes compétences de développement Java/Angular, ainsi que "DevOps".\\}
++  {Conférences suivies : KubeCon, DevoxxFR.\\}
+ 	{\\ \textbf{Points clés\\}}
+     \begin{itemize}
+ 	 \item Technical Leader Fullstack
+         \begin{itemize}
+-	    \item Encadrement technique des équipes de développement
+-	    \item Définition et suivi de la stratégie technique.
+-	    \item Participation et animation de "Leagues" et "Chapters" sur le développement et le "software craftsmanship"
+-	    \item Développement Fullstack d'un outil de suivi de la production "Release Tool" (Java/Angular)
++	    \item Encadrement technique de 18 développeurs sur 3 pays : revues de code, rituels techniques à distance, montée en compétence
++	    \item Définition et suivi de la roadmap technique : [ex. migration Java X vers Y, Spring Boot 2 vers 3, Angular N vers M]
++	    \item Animation de "Leagues" et "Chapters" sur le software craftsmanship (TDD, BDD, architecture hexagonale)
++	    \item Développement fullstack du "Release Tool" (Java/Angular), outil de suivi des mises en production utilisé par [N équipes / N utilisateurs]
+ 	   \end{itemize}
+       \item DevOps
+         \begin{itemize}
+ 	    \item Automatisation des créations d'environnement (Terraform, Ansible, scripts shell)
+-	    \item Automatisation des déploiements (GitHub Actions, Kubernetes, ArgoCD, Helm, Docker)
++	    \item Automatisation des déploiements (GitHub Actions, Kubernetes, ArgoCD, Helm, Docker) : [fréquence de mise en production avant / après]
+ 	    \item Mise en œuvre de l'observabilité de l'application (Stack Elastic, APM, Open Telemetry)
+          \item Suivi de la production
+ 	\end{itemize}
