@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Build the CV PDF. Usage: ./build.sh [variant|all|clean]   (default variant: "default")
+# Env: PDF_NAME overrides the output name, PDF_SUFFIX appends " - <suffix>" to it.
 # A variant is a file variants/<name>.tex; see AGENTS.md.
 # Requires latexmk + pdflatex (TeX Live or MiKTeX). On Windows, run from Git Bash.
 set -euo pipefail
@@ -17,7 +18,8 @@ build_variant() {
 
   local label name
   label="$(sed -n 's/^% pdf-name: *//p' "$src" | head -n1)"
-  name="${PDF_NAME:-CV Christophe BOIVIN - ${label:-$v} - $(date +%Y)}"
+  PDF_NAME="${PDF_NAME:-CV Christophe BOIVIN - ${label:-$v} - $(date +%Y)}"
+  name="${PDF_NAME}${PDF_SUFFIX:+ - ${PDF_SUFFIX}}"
   mkdir -p dist
   cp "build/$v.pdf" "dist/${name}.pdf"
 

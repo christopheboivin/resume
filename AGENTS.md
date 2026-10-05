@@ -12,8 +12,11 @@ A single-file LaTeX CV (in French) built with the `moderncv` class.
 | `variants/*.tex` | Targeted content per position/company (title, profile, skills, current role) | Yes |
 | `moderncv.cls`, `moderncv*.sty`, `collection.sty`, `tweaklist.sty` | Vendored moderncv **v1.3.0 (2013)** | **No** — see `docs/plans/unvendor-moderncv.md` |
 | `latexmkrc` | latexmk config (pdflatex, output in `build/`) | Yes |
-| `build.sh` | Build entry point, copies a named PDF per variant to `dist/` | Yes |
-| `.github/workflows/build.yml` | CI: builds the PDF, uploads it as artifact `cv-pdf` | Yes |
+| `build.sh` | Build entry point, copies a named PDF to `dist/` | Yes |
+| `.github/workflows/build.yml` | Manual "Build CV": builds the PDF (artifact `cv-pdf`); with an occasion, also creates a GitHub Release with generated notes | Yes |
+| `.github/workflows/commitlint.yml` | CI: enforces Conventional Commits on PR commits and PR title | Yes |
+| `.commitlintrc.yml` | commitlint rules (allowed commit types) | Yes |
+| `cliff.toml` | git-cliff config: release notes grouped by commit type | Yes |
 | `docs/plans/` | Reusable plans for future work | Yes |
 
 ## Build
@@ -51,12 +54,25 @@ The positioning analysis behind the variants is in `docs/cv-review/README.md`.
 ## Git workflow
 
 - Every change goes on a **new branch**; the **user chooses the branch name** — ask for it. Never commit directly to `master`.
-- Small, focused commits with conventional prefixes (`build:`, `ci:`, `docs:`, `chore:`, `doc:` for CV content).
-- Batch pushes: commit locally, push once per completed set of changes — every push triggers a CI build. Do not push after each commit.
+- Small, focused commits. [Conventional Commits](https://www.conventionalcommits.org/) are **mandatory**: CI ("Conventional Commits" workflow) lints every PR commit and the PR title, since squash merges use the PR title when a PR has several commits.
+  - `cv:` real CV content updates (`main.tex` wording, experiences, skills). Replaces the former `doc:`.
+  - `feat:` / `fix:` new features / bug fixes in tooling (build, workflows, layout).
+  - `docs:` repository documentation (README, AGENTS.md, `docs/plans/`).
+  - `build:`, `ci:`, `chore:`, `refactor:`, `perf:`, `style:`, `test:`, `revert:` as usual.
+  - Scopes are optional: `cv(experience): add Acme role`.
+  - To add a type, update `.commitlintrc.yml`, the `types` list in `.github/workflows/commitlint.yml` and a group in `cliff.toml`.
+- Batch pushes: commit locally, push once per completed set of changes — every push to a PR triggers the "Conventional Commits" check. Do not push after each commit.
+
+## Build & publish (CI)
+
+The **Build CV** workflow runs on every pull request (build check: the PDF must compile, never releases) and on demand: Actions → Build CV → Run workflow, or `gh workflow run build.yml [--ref <branch>]`. No build on push to `master`.
+
+- PR or occasion empty: builds the PDF and uploads it as artifact `cv-pdf`. No release.
+- Occasion set (`gh workflow run build.yml -f occasion="Salon Tech Lyon"`): builds `<PDF_NAME> - <occasion>.pdf` (`PDF_SUFFIX` in `build.sh`), uploads it as artifact `cv-<slug>`, and creates the release `cv-YYYY-MM-DD-<slug>` with that PDF attached. git-cliff generates the release notes from the commits since the previous `cv-*` tag, grouped by type (CV content first). Publish from `master`.
 
 ## Verification checklist
 
 1. `./build.sh all` exits 0 (it uses `-halt-on-error`).
 2. For each variant the summary prints `Overfull boxes: 0` and `Undefined refs: 0`. Underfull boxes (currently 8–9 per variant, from `itemize` inside `\cventry`) are known and cosmetic; do not increase them.
 3. Page count unchanged unless intended: `pdfinfo build/<variant>.pdf | grep Pages` (currently 3 for every variant). The current-position `\cventry` cannot break across pages, so a few extra lines can push content to a 4th page.
-4. CI workflow "Build CV" passes on the pushed branch/PR.
+4. CI workflows "Build CV" and "Conventional Commits" pass on the PR.

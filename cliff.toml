@@ -1,0 +1,40 @@
+# git-cliff config: release notes for the "Build CV" workflow (occasion releases).
+# Groups follow the Conventional Commits types allowed in .commitlintrc.yml.
+# The <!-- N --> prefixes only order the groups; they are stripped in the output.
+
+[changelog]
+header = ""
+body = """
+{% for group, commits in commits | group_by(attribute="group") %}
+### {{ group | striptags | trim }}
+{% for commit in commits %}
+- {% if commit.scope %}**{{ commit.scope }}:** {% endif %}\
+{{ commit.message | split(pat="\n") | first | trim | upper_first }} \
+([{{ commit.id | truncate(length=7, end="") }}](https://github.com/christopheboivin/resume/commit/{{ commit.id }}))
+{%- endfor %}
+{% endfor %}
+{% if previous and previous.version %}
+**Full changelog**: https://github.com/christopheboivin/resume/compare/{{ previous.version }}...{{ version }}
+{% endif %}
+"""
+trim = true
+footer = ""
+
+[git]
+conventional_commits = true
+filter_unconventional = false
+split_commits = false
+tag_pattern = "cv-.*"
+sort_commits = "oldest"
+commit_parsers = [
+  { message = '^chore\(release\)', skip = true },
+  { message = "^cv[(:!]", group = "<!-- 0 -->CV content" },
+  # Legacy: CV content used `doc:` before Conventional Commits were enforced.
+  { message = "^doc[(:!]", group = "<!-- 0 -->CV content" },
+  { message = "^feat[(:!]", group = "<!-- 1 -->Features" },
+  { message = "^fix[(:!]", group = "<!-- 2 -->Fixes" },
+  { message = "^docs[(:!]", group = "<!-- 3 -->Documentation" },
+  { message = "^(build|ci)[(:!]", group = "<!-- 4 -->Build & CI" },
+  { message = "^(refactor|perf|style|test|chore|revert)[(:!]", group = "<!-- 5 -->Maintenance" },
+  { message = ".*", group = "<!-- 6 -->Other" },
+]

@@ -1,0 +1,9 @@
+# Conventional Commits rules, enforced in CI by .github/workflows/commitlint.yml.
+# Keep type-enum in sync with the `types` list of the pr-title job there and with cliff.toml.
+extends:
+  - '@commitlint/config-conventional'
+rules:
+  type-enum:
+    - 2
+    - always
+    - [build, chore, ci, cv, docs, feat, fix, perf, refactor, revert, style, test]
