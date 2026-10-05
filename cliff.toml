@@ -1,4 +1,4 @@
-# git-cliff config: release notes for the "Publish CV" workflow.
+# git-cliff config: release notes for the "Build CV" workflow (occasion releases).
 # Groups follow the Conventional Commits types allowed in .commitlintrc.yml.
 # The <!-- N --> prefixes only order the groups; they are stripped in the output.
 
