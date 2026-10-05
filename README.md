@@ -16,7 +16,7 @@ Without latexmk: `pdflatex main.tex` (outputs `main.pdf` in the repo root).
 
 ## CI
 
-The PDF is built on demand by the **Build CV** workflow (Actions → Build CV → Run workflow). With the occasion left empty, it only builds; download the PDF from the run's **cv-pdf** artifact.
+The **Build CV** workflow builds the PDF on every pull request and on demand (Actions → Build CV → Run workflow). With the occasion left empty, it only builds; download the PDF from the run's **cv-pdf** artifact.
 
 To publish the CV for an occasion, enter the occasion when running the workflow. It also creates a GitHub Release with `<name> - <occasion>.pdf` attached and a changelog generated from the commits since the previous release.
 

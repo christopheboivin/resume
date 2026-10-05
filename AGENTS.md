@@ -51,9 +51,9 @@ Fallback without latexmk: `pdflatex main.tex` (run twice; writes artifacts in th
 
 ## Build & publish (CI)
 
-The **Build CV** workflow runs on demand only (no push/PR builds): Actions → Build CV → Run workflow, or `gh workflow run build.yml [--ref <branch>]`.
+The **Build CV** workflow runs on every pull request (build check: the PDF must compile, never releases) and on demand: Actions → Build CV → Run workflow, or `gh workflow run build.yml [--ref <branch>]`. No build on push to `master`.
 
-- Occasion empty: builds the PDF and uploads it as artifact `cv-pdf`. No release.
+- PR or occasion empty: builds the PDF and uploads it as artifact `cv-pdf`. No release.
 - Occasion set (`gh workflow run build.yml -f occasion="Salon Tech Lyon"`): builds `<PDF_NAME> - <occasion>.pdf` (`PDF_SUFFIX` in `build.sh`), uploads it as artifact `cv-<slug>`, and creates the release `cv-YYYY-MM-DD-<slug>` with that PDF attached. git-cliff generates the release notes from the commits since the previous `cv-*` tag, grouped by type (CV content first). Publish from `master`.
 
 ## Verification checklist
@@ -61,4 +61,4 @@ The **Build CV** workflow runs on demand only (no push/PR builds): Actions → B
 1. `./build.sh` exits 0 (it uses `-halt-on-error`).
 2. The summary prints `Overfull boxes: 0` and `Undefined refs: 0`. Underfull boxes (currently ~13, from `itemize` inside `\cvitem`) are known and cosmetic; do not increase them.
 3. Page count unchanged unless intended: `pdfinfo build/main.pdf | grep Pages` (currently 3).
-4. "Conventional Commits" passes on the PR, and a manual "Build CV" run on the branch (`gh workflow run build.yml --ref <branch>`, no occasion) passes.
+4. CI workflows "Build CV" and "Conventional Commits" pass on the PR.
