@@ -7,18 +7,20 @@ LaTeX CV built with [moderncv](https://ctan.org/pkg/moderncv) 2.x from the TeX d
 Prerequisites: a TeX distribution providing `pdflatex` and `latexmk` ([TeX Live](https://tug.org/texlive/) or [MiKTeX](https://miktex.org/)). On Windows, use Git Bash.
 
 ```bash
-./build.sh
+./build.sh              # default variant
+./build.sh tech-lead    # variants/tech-lead.tex
+./build.sh all          # every variant
 ```
 
-Outputs `build/main.pdf` and a named copy in `dist/`. `./build.sh clean` removes both directories.
+Outputs `build/<variant>.pdf` and a named copy in `dist/`. `./build.sh clean` removes both directories. Variants are described in [AGENTS.md](AGENTS.md#variants).
 
-Without latexmk: `pdflatex main.tex` (outputs `main.pdf` in the repo root).
+Without latexmk: `pdflatex main.tex` (outputs `main.pdf` in the repo root, default variant).
 
 ## CI
 
-The **Build CV** workflow builds the PDF on every pull request and on demand (Actions → Build CV → Run workflow). With the occasion left empty, it only builds; download the PDF from the run's **cv-pdf** artifact.
+The **Build CV** workflow builds every variant on each pull request and on demand (Actions → Build CV → Run workflow; name a variant to build only that one). With the occasion left empty, it only builds; download the PDFs from the run's **cv-pdf** artifact.
 
-To publish the CV for an occasion, enter the occasion when running the workflow. It also creates a GitHub Release with `<name> - <occasion>.pdf` attached and a changelog generated from the commits since the previous release.
+To publish the CV for an occasion, enter the occasion when running the workflow. It also creates a GitHub Release with a `<name> - <occasion>.pdf` per variant attached and a changelog generated from the commits since the previous release.
 
 Commit messages and PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/) (`cv:` for CV content). CI checks them; see [AGENTS.md](AGENTS.md#git-workflow).
 
