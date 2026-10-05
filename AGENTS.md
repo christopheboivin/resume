@@ -12,6 +12,10 @@ A single-file LaTeX CV (in French) built with the `moderncv` class.
 | `latexmkrc` | latexmk config (pdflatex, output in `build/`) | Yes |
 | `build.sh` | Build entry point, copies a named PDF to `dist/` | Yes |
 | `.github/workflows/build.yml` | CI: builds the PDF, uploads it as artifact `cv-pdf` | Yes |
+| `.github/workflows/publish.yml` | Manual "Publish CV": occasion PDF + GitHub Release with generated notes | Yes |
+| `.github/workflows/commitlint.yml` | CI: enforces Conventional Commits on PR commits and PR title | Yes |
+| `.commitlintrc.yml` | commitlint rules (allowed commit types) | Yes |
+| `cliff.toml` | git-cliff config: release notes grouped by commit type | Yes |
 | `docs/plans/` | Reusable plans for future work | Yes |
 
 ## Build
@@ -37,12 +41,22 @@ Fallback without latexmk: `pdflatex main.tex` (run twice; writes artifacts in th
 ## Git workflow
 
 - Every change goes on a **new branch**; the **user chooses the branch name** — ask for it. Never commit directly to `master`.
-- Small, focused commits with conventional prefixes (`build:`, `ci:`, `docs:`, `chore:`, `doc:` for CV content).
+- Small, focused commits. [Conventional Commits](https://www.conventionalcommits.org/) are **mandatory**: CI ("Conventional Commits" workflow) lints every PR commit and the PR title, since squash merges use the PR title when a PR has several commits.
+  - `cv:` real CV content updates (`main.tex` wording, experiences, skills). Replaces the former `doc:`.
+  - `feat:` / `fix:` new features / bug fixes in tooling (build, workflows, layout).
+  - `docs:` repository documentation (README, AGENTS.md, `docs/plans/`).
+  - `build:`, `ci:`, `chore:`, `refactor:`, `perf:`, `style:`, `test:`, `revert:` as usual.
+  - Scopes are optional: `cv(experience): add Acme role`.
+  - To add a type, update `.commitlintrc.yml`, the `types` list in `.github/workflows/commitlint.yml` and a group in `cliff.toml`.
 - Batch pushes: commit locally, push once per completed set of changes — every push triggers a CI build. Do not push after each commit.
+
+## Publish
+
+For a special occasion: Actions → **Publish CV** → Run workflow, enter the occasion (or `gh workflow run publish.yml -f occasion="Salon Tech Lyon"`). The workflow builds `<PDF_NAME> - <occasion>.pdf` (`PDF_SUFFIX` in `build.sh`), uploads it as artifact `cv-<slug>`, and creates the release `cv-YYYY-MM-DD-<slug>` with that PDF attached. git-cliff generates the release notes from the commits since the previous `cv-*` tag, grouped by type (CV content first). The workflow must be on `master` to be dispatched.
 
 ## Verification checklist
 
 1. `./build.sh` exits 0 (it uses `-halt-on-error`).
 2. The summary prints `Overfull boxes: 0` and `Undefined refs: 0`. Underfull boxes (currently ~13, from `itemize` inside `\cvitem`) are known and cosmetic; do not increase them.
 3. Page count unchanged unless intended: `pdfinfo build/main.pdf | grep Pages` (currently 3).
-4. CI workflow "Build CV" passes on the pushed branch/PR.
+4. CI workflows "Build CV" and "Conventional Commits" pass on the pushed branch/PR.
