@@ -12,7 +12,7 @@ A single-file LaTeX CV (in French) built with the `moderncv` class.
 | `variants/*.tex` | Targeted content per position/company (title, profile, skills, current role) | Yes |
 | `latexmkrc` | latexmk config (pdflatex, output in `build/`) | Yes |
 | `build.sh` | Build entry point, copies a named PDF to `dist/` | Yes |
-| `.github/workflows/build.yml` | "Build CV": builds every variant on PRs; on demand builds one variant (artifact `cv-pdf`); with an occasion, also creates a GitHub Release with generated notes | Yes |
+| `.github/workflows/build.yml` | "Build CV": builds every variant on PRs; on demand builds all or one variant (artifact `cv-pdf`); with an occasion, also creates a GitHub Release with generated notes | Yes |
 | `.github/workflows/commitlint.yml` | CI: enforces Conventional Commits on PR commits and PR title | Yes |
 | `.commitlintrc.yml` | commitlint rules (allowed commit types) | Yes |
 | `cliff.toml` | git-cliff config: release notes grouped by commit type | Yes |
@@ -64,10 +64,10 @@ The positioning analysis behind the variants is in `docs/cv-review/README.md`.
 
 ## Build & publish (CI)
 
-The **Build CV** workflow runs on every pull request (build check: every variant must compile, never releases) and on demand: Actions → Build CV → Run workflow, or `gh workflow run build.yml [--ref <branch>] [-f variant=tech-lead]`. The `variant` input defaults to `default`; `all` builds every variant. No build on push to `master`.
+The **Build CV** workflow runs on every pull request (build check: every variant must compile, never releases) and on demand: Actions → Build CV → Run workflow, or `gh workflow run build.yml [--ref <branch>] [-f variant=tech-lead]`. The `variant` input defaults to `all` (every variant); name one to build only it. No build on push to `master`.
 
 - PR or occasion empty: builds the PDF(s) and uploads them as artifact `cv-pdf`. No release.
-- Occasion set (`gh workflow run build.yml -f variant=tech-lead -f occasion="Salon Tech Lyon"`; `variant=all` is rejected): builds `<PDF name> - <occasion>.pdf` (`PDF_SUFFIX` in `build.sh`), uploads it as artifact `cv-<slug>`, and creates the release `cv-YYYY-MM-DD-<slug>` with that PDF attached. git-cliff generates the release notes from the commits since the previous `cv-*` tag, grouped by type (CV content first). Publish from `master`.
+- Occasion set (`gh workflow run build.yml -f occasion="Salon Tech Lyon" [-f variant=tech-lead]`): builds `<PDF name> - <occasion>.pdf` for each selected variant (`PDF_SUFFIX` in `build.sh`), uploads them as artifact `cv-<slug>`, and creates the release `cv-YYYY-MM-DD-<slug>` with those PDFs attached. git-cliff generates the release notes from the commits since the previous `cv-*` tag, grouped by type (CV content first). Publish from `master`.
 
 ## Verification checklist
 
