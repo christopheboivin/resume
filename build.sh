@@ -18,8 +18,7 @@ build_variant() {
 
   local label name
   label="$(sed -n 's/^% pdf-name: *//p' "$src" | head -n1)"
-  PDF_NAME="${PDF_NAME:-CV Christophe BOIVIN - ${label:-$v} - $(date +%Y)}"
-  name="${PDF_NAME}${PDF_SUFFIX:+ - ${PDF_SUFFIX}}"
+  name="${PDF_NAME:-CV Christophe BOIVIN - ${label:-$v} - $(date +%Y)}${PDF_SUFFIX:+ - ${PDF_SUFFIX}}"
   mkdir -p dist
   cp "build/$v.pdf" "dist/${name}.pdf"
 
