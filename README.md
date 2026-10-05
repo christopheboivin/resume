@@ -16,9 +16,9 @@ Without latexmk: `pdflatex main.tex` (outputs `main.pdf` in the repo root).
 
 ## CI
 
-Every push to `master` and every pull request builds the PDF on GitHub Actions; download it from the run's **cv-pdf** artifact.
+The PDF is built on demand by the **Build CV** workflow (Actions → Build CV → Run workflow). With the occasion left empty, it only builds; download the PDF from the run's **cv-pdf** artifact.
 
-To publish the CV for an occasion, run the **Publish CV** workflow (Actions → Publish CV → Run workflow) and enter the occasion. It creates a GitHub Release with `<name> - <occasion>.pdf` attached and a changelog generated from the commits since the previous release.
+To publish the CV for an occasion, enter the occasion when running the workflow. It also creates a GitHub Release with `<name> - <occasion>.pdf` attached and a changelog generated from the commits since the previous release.
 
 Commit messages and PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/) (`cv:` for CV content). CI checks them; see [AGENTS.md](AGENTS.md#git-workflow).
 
